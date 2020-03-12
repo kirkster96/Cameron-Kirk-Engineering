@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Projects - Cameron Kirk Engineering</title>
+        <link rel="stylesheet" type="text/css" href="stylesheet/stylesheet.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="bio.html">Bio</a>
+            <a href="projects.html">Projects</a>
+            <a href="pictures.html">Pictures</a>
+        </div>
+
+        <div class="main">
+            <img src="images/Projects/highorlow1.PNG" width=400px align="right" hspace="10">
+            <h2>High or Low Game</h2>
+            <h5>Unity Game Engine Project</h5>
+            <h3>Objective</h3>
+            <p>The purpose of this project was to create a card game</p>
+            <h3>Gameplay Flow</h3>
+            <ol>
+                <li>Standard deck of 52 playing cards.</li>
+                <li>Draw 2 cards.</li>
+                <li>Use numerical value of the card to determine
+                    which card is "higher" or "lower".
+                </li>
+                <li>If the numerical values are equal then use suit value
+                    to determine the "higher" card.
+                    Suit hierarchy is Spades > Hearts > Diamonds > Clubs.
+                </li>
+                <li>Continue to draw two cards from the deck until it is depleted.
+                    When no cards remain, return all cards to the deck and shuffle.
+                </li>                
+            </ol>
+            <h3>Requirements</h3>
+                <ul>
+                    <li>Hearts and Ace of Spades have increased chance 
+                        of being drawn. Each Heart Suit card should have
+                        2X the chance of being drawn than the normal cards.
+                        The Ace of Spades should have 3X the chance of being drawn
+                        than the normal cards.
+                    </li>
+                    <li>The same card cannot appear twice in one draw (for example,
+                        there cannot be two Ace of Spades on the table at once).
+                    </li>
+                </ul>
+            <h3>Solution</h3>
+            <p>My game was created using Unity Game Engine. 
+                I created a script responsible for placing and moving the cards on the screen.
+                I also created a second script responsible for the random selection of a card from
+                the deck.
+            </p>
+
+            <h4>Statistics Theory</h4>
+
+            <p>One important observation that was a instructive moment for
+                myself was how to handle increasing the chances of a card 
+                being drawn. My first intuition was to just double or triple 
+                the weight of the card, however it turned out to be incorrect.
+                It must be understood that when you double a card in the deck,
+                the total deck size will also increase. If the increase deck size
+                is not accounted for, then the sum of all probabilities will be 
+                greater than 1. According to theory, the sum of all probabilities
+                must be equal to 1. In order to address this issue, I created a
+                second virtual deck that is seperate from the playing deck of
+                52 cards. This virtual deck size ended up being larger than 52.
+                I also had to create another boolean C# list to track which cards 
+                were still in the playing deck. I then used the C# random function
+                to generate a random integer for the index of the virtual deck.
+                The card is then drawn from the playing deck and the virtual deck
+                is rebuilt.
+            </p>
+
+            <p>The result of this method meant that my script needs
+                to iterate through the deck after every draw and rebuild
+                the virtual deck used for handling the probabilities.
+
+            </p>
+
+            <h3>Pictures</h3>
+            
+
+        </div>
+    </body>
+</html>
